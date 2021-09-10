@@ -10,7 +10,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 function generatePassword () {
@@ -19,10 +18,12 @@ function generatePassword () {
 
   var password = "";
 
-  for (i=0, i < length , i++) {
-    
+  for (i=0; i < length; i++) {
+    var j = Math.floor(Math.random() * characters.length);
+    password += characters[j];
   }
-  
+
+  return password;
 }
 
 function passwordLength() {
@@ -97,14 +98,14 @@ function getAllowedCharacters() {
     allowedCharacters += "0123456789";
   }
 
-// ensures that at least one character type is included in the allowed characters
+  // ensures that at least one character type is included in the allowed characters
 
-if (!upperCase && !lowerCase && !specialCharacters && !numbers) {
-  window.alert("You need to have at least one type of characters in your password. Please select 'yes' for at least one of the options.");
-  return getAllowedCharacters();
-}
+  if (!upperCase && !lowerCase && !specialCharacters && !numbers) {
+    window.alert("You need to have at least one type of characters in your password. Please select 'yes' for at least one of the options.");
+    return getAllowedCharacters();
+  }
 
-return allowedCharacters;
+  return allowedCharacters;
 }
 
 
@@ -114,17 +115,7 @@ return allowedCharacters;
 generateBtn.addEventListener("click", writePassword);
 
 
-// window prompts for criteria:
-  // length 8-128 characters
-  // special characters
-  // numbers
-  // uppercase
-  // lowercase
- // answers should be validated and at least one type should be selected
 
-// 
-
- //display password to page or alert
 
 
 
