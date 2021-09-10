@@ -75,6 +75,7 @@ function getAllowedCharacters() {
   var specialCharacters = passwordSpecialCharacters();
   var numbers = passwordNumbers();
 
+  // determines which characters the password will be generated from
   var allowedCharacters = "";
   if (upperCase) {
     allowedCharacters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -83,11 +84,20 @@ function getAllowedCharacters() {
     allowedCharacters += "abcdefghijklmnopqrstuvwxyz";
   }
   if (specialCharacters) {
-    allowedCharacters += " !\"#$%&'()*+,-./:;<=>?@[]\\^_`{|}~";
+    // space excluded from the list of special characters w/the user experience in mind and avoiding any confusion
+    allowedCharacters += "!\"#$%&'()*+,-./:;<=>?@[]\\^_`{|}~";
   }
   if (numbers) {
     allowedCharacters += "0123456789";
   }
+
+// ensures that at least one character type is included in the allowed characters
+
+if (!upperCase && !lowerCase && !specialCharacters && !numbers) {
+  window.alert("You need to have at least one type of characters in your password. Please select 'yes' for at least one of the options.");
+  return getAllowedCharacters();
+}
+
 
   return allowedCharacters;
 }
