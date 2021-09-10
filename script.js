@@ -15,10 +15,8 @@ function writePassword() {
 
 function generatePassword () {
   var length = passwordLength();
-  var upperCase = passwordUpperCase();
-  var lowerCase = passwordLowerCase();
-  var specialCharacters = passwordSpecialCharacters();
-  var numbers = passwordNumbers();
+  var characters = getAllowedCharacters();
+  
 }
 
 function passwordLength() {
@@ -27,6 +25,7 @@ function passwordLength() {
     window.alert("You need to select a number between 8 and 128. Please try again.");
     return passwordLength();
   }
+  return parseInt(promptLength);
 } 
 
 function passwordUpperCase() {
@@ -36,6 +35,7 @@ function passwordUpperCase() {
     window.alert("You need to type 'yes' or 'no'. Please try again.");
     return passwordUpperCase();
   }
+  return promptUpperCase === "yes";
 }
 
 function passwordLowerCase() {
@@ -45,6 +45,7 @@ function passwordLowerCase() {
     window.alert("You need to type 'yes' or 'no'. Please try again.");
     return passwordLowerCase();
   }
+  return promptLowerCase === "yes";
 }
 
 function passwordSpecialCharacters () {
@@ -54,6 +55,7 @@ function passwordSpecialCharacters () {
     window.alert("You need to type 'yes' or 'no'. Please try again.");
     return passwordSpecialCharacters();
   }
+  return promptSpecialCharacters === "yes";
 }
 
 function passwordNumbers () {
@@ -63,7 +65,33 @@ function passwordNumbers () {
     window.alert("You need to type 'yes' or 'no'. Please try again.");
     return passwordNumbers();
   }
+  return promptNumbers === "yes";
 }
+
+function getAllowedCharacters() {
+  // vars return true or false
+  var upperCase = passwordUpperCase();
+  var lowerCase = passwordLowerCase();
+  var specialCharacters = passwordSpecialCharacters();
+  var numbers = passwordNumbers();
+
+  var allowedCharacters = "";
+  if (upperCase) {
+    allowedCharacters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  }
+  if (lowerCase) {
+    allowedCharacters += "abcdefghijklmnopqrstuvwxyz";
+  }
+  if (specialCharacters) {
+    allowedCharacters += " !\"#$%&'()*+,-./:;<=>?@[]\\^_`{|}~";
+  }
+  if (numbers) {
+    allowedCharacters += "0123456789";
+  }
+
+  return allowedCharacters;
+}
+
 
 
 
