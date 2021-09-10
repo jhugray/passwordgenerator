@@ -16,6 +16,12 @@ function writePassword() {
 function generatePassword () {
   var length = passwordLength();
   var characters = getAllowedCharacters();
+
+  var password = "";
+
+  for (i=0, i < length , i++) {
+    
+  }
   
 }
 
@@ -98,8 +104,7 @@ if (!upperCase && !lowerCase && !specialCharacters && !numbers) {
   return getAllowedCharacters();
 }
 
-
-  return allowedCharacters;
+return allowedCharacters;
 }
 
 
